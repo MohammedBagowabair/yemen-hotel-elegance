@@ -1,3 +1,4 @@
+import { LazyImg } from "@/components/LazyImg";
 import { pic } from "@/lib/img";
 import { useRef, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
@@ -45,7 +46,7 @@ export function Rooms() {
             <Reveal key={room.name.en} delay={index * 90} className="w-[84%] shrink-0 md:w-auto">
               <article className="group flex h-full flex-col overflow-hidden rounded-3xl border border-border/70 bg-card transition-shadow duration-500 hover:shadow-[0_35px_70px_-45px_rgba(60,40,20,0.6)]">
                 <div className="relative aspect-[4/3] overflow-hidden">
-                  <img
+                  <LazyImg
                     {...images[index]}
                     sizes="(min-width: 1024px) 30vw, (min-width: 768px) 45vw, 84vw"
                     alt={room.name[lang]}

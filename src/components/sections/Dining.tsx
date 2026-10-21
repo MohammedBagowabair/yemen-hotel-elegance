@@ -1,3 +1,4 @@
+import { LazyImg } from "@/components/LazyImg";
 import { pic } from "@/lib/img";
 import { Clock } from "lucide-react";
 import { dining } from "@/lib/content";
@@ -29,7 +30,7 @@ export function Dining() {
           {dining.items.map((item, index) => (
             <Reveal key={item.name.en}>
               <article className="relative isolate overflow-hidden rounded-[1.75rem] border border-border/60 bg-ink">
-                <img
+                <LazyImg
                   {...images[index]}
                   sizes="100vw"
                   alt={item.name[lang]}
@@ -74,7 +75,7 @@ export function Dining() {
                   index % 2 === 1 && "lg:order-2",
                 )}
               >
-                <img
+                <LazyImg
                   {...images[index]}
                   sizes="(min-width: 1024px) 50vw, 100vw"
                   alt={item.name[lang]}

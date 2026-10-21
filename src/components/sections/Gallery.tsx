@@ -1,3 +1,4 @@
+import { LazyImg } from "@/components/LazyImg";
 import { pic } from "@/lib/img";
 import { gallery } from "@/lib/content";
 import { useLanguage } from "@/lib/language";
@@ -39,7 +40,7 @@ export function Gallery() {
               delay={index * 60}
               className={cn("group relative overflow-hidden rounded-2xl", shot.span)}
             >
-              <img
+              <LazyImg
                 {...shot.src}
                 sizes="(min-width: 640px) 50vw, 100vw"
                 alt={gallery.captions[index]?.[lang] ?? ""}

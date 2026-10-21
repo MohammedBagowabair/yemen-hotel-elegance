@@ -1,3 +1,4 @@
+import { LazyImg } from "@/components/LazyImg";
 import { pic } from "@/lib/img";
 import { Phone } from "lucide-react";
 import { cta } from "@/lib/content";
@@ -10,7 +11,7 @@ export function CtaBanner() {
 
   return (
     <section className="relative isolate overflow-hidden bg-ink">
-      <img
+      <LazyImg
         {...cityImg}
         sizes="100vw"
         alt=""

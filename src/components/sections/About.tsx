@@ -1,3 +1,4 @@
+import { LazyImg } from "@/components/LazyImg";
 import { pic } from "@/lib/img";
 import { about, stats } from "@/lib/content";
 import { useLanguage } from "@/lib/language";
@@ -15,7 +16,7 @@ export function About() {
       <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 sm:px-8 lg:grid-cols-2 lg:gap-20">
         <Reveal className="relative">
           <div className="overflow-hidden rounded-[2rem] border border-border/60">
-            <img
+            <LazyImg
               {...detailImg}
               sizes="(min-width: 1024px) 50vw, 100vw"
               alt="Qamariya stained-glass window and gypsum frieze on an Old Sana'a façade"
@@ -26,7 +27,7 @@ export function About() {
             />
           </div>
           <div className="absolute -bottom-10 w-48 overflow-hidden rounded-2xl border-4 border-background shadow-xl sm:w-64 ltr:-right-4 rtl:-left-4 lg:w-72">
-            <img
+            <LazyImg
               {...cityImg}
               sizes="(min-width: 1024px) 18rem, (min-width: 640px) 16rem, 12rem"
               alt="Tower houses of Old Sana'a at dawn"

@@ -1,3 +1,4 @@
+import { LazyImg } from "@/components/LazyImg";
 import { pic } from "@/lib/img";
 import { useState, type FormEvent, type ReactNode } from "react";
 import { Check, Clock, Mail, MapPin, Phone, Send } from "lucide-react";
@@ -100,7 +101,7 @@ export function Contact() {
         <Reveal delay={140}>
           <div className="overflow-hidden rounded-[2rem] border border-border/70">
             <div className="relative h-52">
-              <img
+              <LazyImg
                 {...cityImg}
                 sizes="(min-width: 1024px) 40vw, 100vw"
                 alt="Old Sana'a seen from the hotel parapet"
