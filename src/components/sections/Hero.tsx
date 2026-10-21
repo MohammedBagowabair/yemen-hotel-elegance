@@ -78,7 +78,7 @@ function BookingBar() {
         </Field>
 
         <Field label={booking.guests[lang]}>
-          <span className="flex items-center gap-2">
+          <span className="relative flex items-center gap-2">
             <Users className="size-4 shrink-0 text-brass" aria-hidden />
             <select
               value={guests}
@@ -91,12 +91,15 @@ function BookingBar() {
                 </option>
               ))}
             </select>
-            <ChevronDown className="size-3.5 shrink-0 text-muted-foreground" aria-hidden />
+            <ChevronDown
+              className="pointer-events-none absolute size-3.5 text-muted-foreground end-0"
+              aria-hidden
+            />
           </span>
         </Field>
 
         <Field label={booking.rooms[lang]}>
-          <span className="flex items-center gap-2">
+          <span className="relative flex items-center gap-2">
             <CalendarDays className="size-4 shrink-0 text-brass" aria-hidden />
             <select
               value={rooms}
@@ -109,7 +112,10 @@ function BookingBar() {
                 </option>
               ))}
             </select>
-            <ChevronDown className="size-3.5 shrink-0 text-muted-foreground" aria-hidden />
+            <ChevronDown
+              className="pointer-events-none absolute size-3.5 text-muted-foreground end-0"
+              aria-hidden
+            />
           </span>
         </Field>
 
