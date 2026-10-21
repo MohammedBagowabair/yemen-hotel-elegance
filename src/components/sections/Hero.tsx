@@ -58,6 +58,7 @@ export function Hero() {
           alt=""
           aria-hidden
           fetchPriority="high"
+          decoding="async"
           width={1920}
           height={1088}
           className="hero-drift absolute inset-0 size-full object-cover"
