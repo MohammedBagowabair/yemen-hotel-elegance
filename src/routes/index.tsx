@@ -12,6 +12,7 @@ import { CtaBanner } from "@/components/sections/CtaBanner";
 import { Contact } from "@/components/sections/Contact";
 import { a11y, meta } from "@/lib/content";
 import { useLanguage } from "@/lib/language";
+import { heroAvifSrcSet, heroMobileAvifSrcSet } from "@/lib/img";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -25,6 +26,11 @@ export const Route = createFileRoute("/")({
       { property: "og:locale", content: "ar_YE" },
       { property: "og:locale:alternate", content: "en_US" },
       { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [
+      // Preload the LCP hero image (portrait crop on phones, landscape elsewhere).
+      { rel: "preload", as: "image", type: "image/avif", imageSrcSet: heroMobileAvifSrcSet, imageSizes: "100vw", media: "(max-aspect-ratio: 1/1)", fetchPriority: "high" },
+      { rel: "preload", as: "image", type: "image/avif", imageSrcSet: heroAvifSrcSet, imageSizes: "100vw", media: "(min-aspect-ratio: 1/1)", fetchPriority: "high" },
     ],
   }),
   component: HotelPage,

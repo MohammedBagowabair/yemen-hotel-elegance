@@ -1,10 +1,11 @@
+import { pic } from "@/lib/img";
 import { useState, type FormEvent, type ReactNode } from "react";
 import { Check, Clock, Mail, MapPin, Phone, Send } from "lucide-react";
 import { contact } from "@/lib/content";
 import { useLanguage } from "@/lib/language";
 import { Reveal } from "@/components/Reveal";
 import { SectionHead } from "@/components/SectionHead";
-import cityImg from "@/assets/city.jpg";
+const cityImg = pic("city");
 
 const inputClass =
   "w-full rounded-xl border border-border bg-card px-4 py-3 text-sm text-ink transition-colors placeholder:text-muted-foreground/70 focus:border-brass focus:outline-none";
@@ -100,7 +101,8 @@ export function Contact() {
           <div className="overflow-hidden rounded-[2rem] border border-border/70">
             <div className="relative h-52">
               <img
-                src={cityImg}
+                {...cityImg}
+                sizes="(min-width: 1024px) 40vw, 100vw"
                 alt="Old Sana'a seen from the hotel parapet"
                 loading="lazy"
                 width={1200}

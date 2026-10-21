@@ -1,6 +1,10 @@
 @import "tailwindcss" source(none);
 @source "../src";
+@source not "./components/ui";
 @import "tw-animate-css";
+
+/* Fonts: self-hosted latin+arabic subsets in public/fonts/fonts.css (font-display: swap), loaded non-blocking by scripts/inline-css.mjs */
+
 
 @custom-variant dark (&:is(.dark *));
 
@@ -243,4 +247,10 @@ body[data-scroll-locked] .wa-fab {
 }
 .swipe-rail > * {
   scroll-snap-align: start;
+}
+
+/* Bilingual above-the-fold text (components/T.tsx) */
+html[lang="ar"] .t-en,
+html:not([lang="ar"]) .t-ar {
+  display: none;
 }

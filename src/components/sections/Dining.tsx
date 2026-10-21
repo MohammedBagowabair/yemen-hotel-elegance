@@ -1,12 +1,13 @@
+import { pic } from "@/lib/img";
 import { Clock } from "lucide-react";
 import { dining } from "@/lib/content";
 import { useLanguage } from "@/lib/language";
 import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/Reveal";
 import { SectionHead } from "@/components/SectionHead";
-import coffeeImg from "@/assets/coffee.jpg";
-import diningImg from "@/assets/dining.jpg";
-import majlisImg from "@/assets/majlis.jpg";
+const coffeeImg = pic("coffee");
+const diningImg = pic("dining");
+const majlisImg = pic("majlis");
 
 const images = [diningImg, coffeeImg, majlisImg];
 
@@ -29,7 +30,8 @@ export function Dining() {
             <Reveal key={item.name.en}>
               <article className="relative isolate overflow-hidden rounded-[1.75rem] border border-border/60 bg-ink">
                 <img
-                  src={images[index]}
+                  {...images[index]}
+                  sizes="100vw"
                   alt={item.name[lang]}
                   loading="lazy"
                   width={1200}
@@ -73,7 +75,8 @@ export function Dining() {
                 )}
               >
                 <img
-                  src={images[index]}
+                  {...images[index]}
+                  sizes="(min-width: 1024px) 50vw, 100vw"
                   alt={item.name[lang]}
                   loading="lazy"
                   width={1200}

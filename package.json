@@ -13,7 +13,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "deploy": "gh-pages -d dist/client",
-    "build:pages": "vite build && node scripts/render-404.mjs"
+    "build:pages": "vite build && node scripts/render-404.mjs && node scripts/inline-css.mjs"
   },
   "overrides": {
     "rolldown": "1.2.1"

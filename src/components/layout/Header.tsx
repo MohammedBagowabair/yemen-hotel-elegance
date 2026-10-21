@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { T } from "@/components/T";
 import { Globe, Menu, X } from "lucide-react";
 import { a11y, brand, nav } from "@/lib/content";
 import { useLanguage } from "@/lib/language";
@@ -30,7 +31,7 @@ function Wordmark({ tone }: { tone: "light" | "dark" }) {
             tone === "light" ? "text-background" : "text-ink",
           )}
         >
-          {brand.name[lang]}
+          <T v={brand.name} />
         </span>
         <span
           className={cn(
@@ -92,7 +93,7 @@ export function Header() {
                   : "text-background/80 hover:text-background",
               )}
             >
-              {link.label[lang]}
+              <T v={link.label} />
             </a>
           ))}
         </nav>
@@ -110,14 +111,14 @@ export function Header() {
             )}
           >
             <Globe className="size-3.5" aria-hidden />
-            {nav.langLabel[lang]}
+            <T v={nav.langLabel} />
           </button>
 
           <a
             href="#contact"
             className="hidden rounded-full bg-primary px-5 py-2.5 text-xs font-semibold tracking-wide text-primary-foreground transition-colors hover:bg-primary/90 sm:inline-flex"
           >
-            {nav.book[lang]}
+            <T v={nav.book} />
           </a>
 
           <button

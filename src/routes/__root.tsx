@@ -1,4 +1,3 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
   Link,
@@ -74,7 +73,7 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
   );
 }
 
-export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
+export const Route = createRootRouteWithContext<Record<string, never>>()({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
@@ -103,16 +102,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "icon", href: `${BASE}favicon-32x32.png`, type: "image/png", sizes: "32x32" },
       { rel: "apple-touch-icon", href: `${BASE}apple-touch-icon.png`, sizes: "180x180" },
       { rel: "manifest", href: `${BASE}site.webmanifest` },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      {
-        rel: "preconnect",
-        href: "https://fonts.gstatic.com",
-        crossOrigin: "anonymous",
-      },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Marcellus&family=Jost:wght@300;400;500;600&family=Reem+Kufi:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&display=swap",
-      },
     ],
   }),
   shellComponent: RootShell,
@@ -136,15 +125,11 @@ function RootShell({ children }: { children: ReactNode }) {
 }
 
 function RootComponent() {
-  const { queryClient } = Route.useRouteContext();
-
   return (
-    <QueryClientProvider client={queryClient}>
-      <LanguageProvider>
-        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-        <Outlet />
-        <WhatsAppFab />
-      </LanguageProvider>
-    </QueryClientProvider>
+    <LanguageProvider>
+      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+      <Outlet />
+      <WhatsAppFab />
+    </LanguageProvider>
   );
 }

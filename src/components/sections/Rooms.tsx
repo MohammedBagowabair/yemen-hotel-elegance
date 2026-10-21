@@ -1,3 +1,4 @@
+import { pic } from "@/lib/img";
 import { useRef, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { rooms } from "@/lib/content";
@@ -7,9 +8,9 @@ import { SectionHead } from "@/components/SectionHead";
 import { WaGlyph } from "@/components/WhatsAppFab";
 import { waLink, waMessages } from "@/lib/whatsapp";
 import { cn } from "@/lib/utils";
-import detailImg from "@/assets/detail.jpg";
-import majlisImg from "@/assets/majlis.jpg";
-import suiteImg from "@/assets/suite.jpg";
+const detailImg = pic("detail");
+const majlisImg = pic("majlis");
+const suiteImg = pic("suite");
 
 const images = [detailImg, suiteImg, majlisImg];
 
@@ -45,7 +46,8 @@ export function Rooms() {
               <article className="group flex h-full flex-col overflow-hidden rounded-3xl border border-border/70 bg-card transition-shadow duration-500 hover:shadow-[0_35px_70px_-45px_rgba(60,40,20,0.6)]">
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <img
-                    src={images[index]}
+                    {...images[index]}
+                    sizes="(min-width: 1024px) 30vw, (min-width: 768px) 45vw, 84vw"
                     alt={room.name[lang]}
                     loading="lazy"
                     width={1200}

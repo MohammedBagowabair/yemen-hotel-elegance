@@ -1,8 +1,9 @@
+import { pic } from "@/lib/img";
 import { Phone } from "lucide-react";
 import { cta } from "@/lib/content";
 import { useLanguage } from "@/lib/language";
 import { Reveal } from "@/components/Reveal";
-import cityImg from "@/assets/city.jpg";
+const cityImg = pic("city");
 
 export function CtaBanner() {
   const { lang } = useLanguage();
@@ -10,7 +11,8 @@ export function CtaBanner() {
   return (
     <section className="relative isolate overflow-hidden bg-ink">
       <img
-        src={cityImg}
+        {...cityImg}
+        sizes="100vw"
         alt=""
         aria-hidden
         loading="lazy"

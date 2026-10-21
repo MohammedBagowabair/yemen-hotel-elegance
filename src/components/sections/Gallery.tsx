@@ -1,14 +1,15 @@
+import { pic } from "@/lib/img";
 import { gallery } from "@/lib/content";
 import { useLanguage } from "@/lib/language";
 import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/Reveal";
 import { SectionHead } from "@/components/SectionHead";
-import cityImg from "@/assets/city.jpg";
-import coffeeImg from "@/assets/coffee.jpg";
-import detailImg from "@/assets/detail.jpg";
-import diningImg from "@/assets/dining.jpg";
-import heroImg from "@/assets/hero.jpg";
-import spaImg from "@/assets/spa.jpg";
+const cityImg = pic("city");
+const coffeeImg = pic("coffee");
+const detailImg = pic("detail");
+const diningImg = pic("dining");
+const heroImg = pic("hero");
+const spaImg = pic("spa");
 
 const shots = [
   { src: heroImg, w: 1920, h: 1088, span: "sm:col-span-2 sm:row-span-2" },
@@ -39,7 +40,8 @@ export function Gallery() {
               className={cn("group relative overflow-hidden rounded-2xl", shot.span)}
             >
               <img
-                src={shot.src}
+                {...shot.src}
+                sizes="(min-width: 640px) 50vw, 100vw"
                 alt={gallery.captions[index]?.[lang] ?? ""}
                 loading="lazy"
                 width={shot.w}

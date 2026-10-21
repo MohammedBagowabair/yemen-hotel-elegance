@@ -1,9 +1,11 @@
+import { heroAvifSrcSet, heroMobileAvifSrcSet, heroMobileSrcSet, pic } from "@/lib/img";
 import { ArrowDown, Clock, Coffee, MapPin, Plane } from "lucide-react";
 import { hero, highlights } from "@/lib/content";
 import { useLanguage } from "@/lib/language";
 import { waLink, waMessages } from "@/lib/whatsapp";
+import { T } from "@/components/T";
 import { WaGlyph } from "@/components/WhatsAppFab";
-import heroImg from "@/assets/hero.jpg";
+const heroImg = pic("hero");
 
 const highlightIcons = [MapPin, Plane, Clock, Coffee];
 
@@ -21,8 +23,8 @@ function HighlightStrip() {
                 <Icon className="size-4" aria-hidden />
               </span>
               <span className="min-w-0 leading-tight">
-                <span className="block text-sm font-medium text-background">{item.title[lang]}</span>
-                <span className="mt-1 block text-xs text-background/65">{item.text[lang]}</span>
+                <span className="block text-sm font-medium text-background"><T v={item.title} /></span>
+                <span className="mt-1 block text-xs text-background/65"><T v={item.text} /></span>
               </span>
             </li>
           );
@@ -35,7 +37,7 @@ function HighlightStrip() {
         className="mt-2 flex min-h-[52px] items-center justify-center gap-2 rounded-2xl bg-primary px-6 text-sm font-semibold tracking-wide text-primary-foreground transition-colors hover:bg-primary/90"
       >
         <WaGlyph className="size-[18px]" />
-        {highlights.cta[lang]}
+        <T v={highlights.cta} />
       </a>
     </div>
   );
@@ -46,15 +48,21 @@ export function Hero() {
 
   return (
     <section id="top" className="relative isolate overflow-hidden bg-ink">
-      <img
-        src={heroImg}
-        alt=""
-        aria-hidden
-        fetchPriority="high"
-        width={1920}
-        height={1088}
-        className="hero-drift absolute inset-0 size-full object-cover"
-      />
+      <picture>
+        <source media="(max-aspect-ratio: 1/1)" type="image/avif" srcSet={heroMobileAvifSrcSet} sizes="100vw" />
+        <source media="(max-aspect-ratio: 1/1)" type="image/webp" srcSet={heroMobileSrcSet} sizes="100vw" />
+        <source type="image/avif" srcSet={heroAvifSrcSet} sizes="100vw" />
+        <img
+          {...heroImg}
+          sizes="100vw"
+          alt=""
+          aria-hidden
+          fetchPriority="high"
+          width={1920}
+          height={1088}
+          className="hero-drift absolute inset-0 size-full object-cover"
+        />
+      </picture>
       <div
         aria-hidden
         className="absolute inset-0 bg-gradient-to-b from-ink/75 via-ink/45 to-ink/85"
@@ -68,26 +76,26 @@ export function Hero() {
         <div className="max-w-3xl">
           <p className="flex items-center gap-3 text-[0.7rem] tracking-[0.2em] text-brass uppercase">
             <span aria-hidden className="rule-brass" />
-            {hero.eyebrow[lang]}
+            <T v={hero.eyebrow} />
           </p>
           <h1 className="mt-6 font-display text-4xl leading-[1.08] text-background sm:text-6xl lg:text-7xl">
-            {hero.title[lang]}
+            <T v={hero.title} />
           </h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-background/80 sm:text-lg">
-            {hero.text[lang]}
+            <T v={hero.text} />
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-3">
             <a
               href="#contact"
               className="rounded-full bg-brass px-7 py-3.5 text-sm font-semibold text-ink transition-transform hover:scale-[1.03]"
             >
-              {hero.primary[lang]}
+              <T v={hero.primary} />
             </a>
             <a
               href="#about"
               className="rounded-full border border-background/35 px-7 py-3.5 text-sm font-semibold text-background transition-colors hover:border-background hover:bg-background/10"
             >
-              {hero.secondary[lang]}
+              <T v={hero.secondary} />
             </a>
           </div>
         </div>
@@ -100,7 +108,7 @@ export function Hero() {
           href="#about"
           className="scroll-cue mx-auto mt-10 flex flex-col items-center gap-2 text-[0.62rem] tracking-[0.3em] text-background/60 uppercase"
         >
-          {hero.scroll[lang]}
+          <T v={hero.scroll} />
           <ArrowDown className="size-4" aria-hidden />
         </a>
       </div>

@@ -1,8 +1,9 @@
+import { pic } from "@/lib/img";
 import { about, stats } from "@/lib/content";
 import { useLanguage } from "@/lib/language";
 import { Reveal } from "@/components/Reveal";
-import cityImg from "@/assets/city.jpg";
-import detailImg from "@/assets/detail.jpg";
+const cityImg = pic("city");
+const detailImg = pic("detail");
 
 const statItems = [stats.rooms, stats.rooftop, stats.airport, stats.rating];
 
@@ -15,7 +16,8 @@ export function About() {
         <Reveal className="relative">
           <div className="overflow-hidden rounded-[2rem] border border-border/60">
             <img
-              src={detailImg}
+              {...detailImg}
+              sizes="(min-width: 1024px) 50vw, 100vw"
               alt="Qamariya stained-glass window and gypsum frieze on an Old Sana'a façade"
               loading="lazy"
               width={912}
@@ -25,7 +27,8 @@ export function About() {
           </div>
           <div className="absolute -bottom-10 w-48 overflow-hidden rounded-2xl border-4 border-background shadow-xl sm:w-64 ltr:-right-4 rtl:-left-4 lg:w-72">
             <img
-              src={cityImg}
+              {...cityImg}
+              sizes="(min-width: 1024px) 18rem, (min-width: 640px) 16rem, 12rem"
               alt="Tower houses of Old Sana'a at dawn"
               loading="lazy"
               width={1200}
