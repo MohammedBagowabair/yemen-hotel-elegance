@@ -23,7 +23,7 @@ export function About() {
               className="size-full object-cover"
             />
           </div>
-          <div className="absolute -bottom-10 w-48 overflow-hidden rounded-2xl border-4 border-background shadow-xl sm:w-64 ltr:-right-6 rtl:-left-6 lg:w-72">
+          <div className="absolute -bottom-10 w-48 overflow-hidden rounded-2xl border-4 border-background shadow-xl sm:w-64 ltr:-right-4 rtl:-left-4 lg:w-72">
             <img
               src={cityImg}
               alt="Tower houses of Old Sana'a at dawn"

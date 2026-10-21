@@ -1,4 +1,4 @@
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 import { ArrowDown, CalendarDays, ChevronDown, Search, Users } from "lucide-react";
 import { booking, hero } from "@/lib/content";
 import { useLanguage } from "@/lib/language";
@@ -10,7 +10,7 @@ function Field({
   children,
 }: {
   label: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   return (
     <label className="flex flex-1 flex-col gap-1.5 px-4 py-3 text-start">
@@ -21,7 +21,7 @@ function Field({
 }
 
 const selectClass =
-  "w-full appearance-none bg-transparent text-sm font-medium text-ink focus:outline-none";
+  "w-full appearance-none bg-transparent pe-6 text-sm font-medium text-ink focus:outline-none";
 
 function BookingBar() {
   const { lang } = useLanguage();
@@ -50,6 +50,7 @@ function BookingBar() {
         <Field label={booking.checkIn[lang]}>
           <input
             type="date"
+            lang={lang}
             required
             min={today}
             value={checkIn}
@@ -64,6 +65,7 @@ function BookingBar() {
         <Field label={booking.checkOut[lang]}>
           <input
             type="date"
+            lang={lang}
             required
             min={checkIn || today}
             value={checkOut}

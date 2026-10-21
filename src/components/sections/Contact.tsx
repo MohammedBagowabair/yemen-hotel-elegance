@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react";
+import { useState, type FormEvent, type ReactNode } from "react";
 import { Check, Clock, Mail, MapPin, Phone, Send } from "lucide-react";
 import { contact } from "@/lib/content";
 import { useLanguage } from "@/lib/language";
@@ -9,7 +9,7 @@ import cityImg from "@/assets/city.jpg";
 const inputClass =
   "w-full rounded-xl border border-border bg-card px-4 py-3 text-sm text-ink transition-colors placeholder:text-muted-foreground/70 focus:border-brass focus:outline-none";
 
-function FieldRow({ label, children }: { label: string; children: React.ReactNode }) {
+function FieldRow({ label, children }: { label: string; children: ReactNode }) {
   return (
     <label className="flex flex-col gap-2">
       <span className="text-xs tracking-[0.14em] text-muted-foreground uppercase">{label}</span>
