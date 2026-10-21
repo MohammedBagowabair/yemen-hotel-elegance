@@ -8,11 +8,14 @@ import {
   Scripts,
   type ErrorComponentProps,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import { reportLovableError } from "../lib/lovable-error-reporting";
 import { LanguageProvider } from "../lib/language";
+
+const BASE = import.meta.env.BASE_URL;
+const SITE_URL = "https://mohammedbagowabair.github.io/yemen-hotel-elegance/";
+const OG_IMAGE = `${SITE_URL}og-image.jpg`;
 
 function NotFoundComponent() {
   return (
@@ -39,9 +42,6 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: ErrorComponentProps) {
   console.error(error);
   const router = useRouter();
-  useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
-  }, [error]);
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -61,7 +61,7 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
             Try again
           </button>
           <a
-            href="/"
+            href={import.meta.env.BASE_URL}
             className="inline-flex items-center justify-center rounded-full border border-input bg-background px-5 py-2.5 text-sm font-medium text-ink transition-colors hover:bg-accent"
           >
             Go home
@@ -94,14 +94,24 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "A restored Old Sana'a house reborn as a 48-key boutique hotel: courtyard rooms, rooftop mezze at sunset, and a hammam below the oldest mountain city in the world.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: OG_IMAGE },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "Dar Al Sama Hotel & Residences, Old Sana'a" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: OG_IMAGE },
+      { name: "theme-color", content: "#2C2119" },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: `${BASE}favicon.ico`, sizes: "48x48" },
+      { rel: "icon", href: `${BASE}favicon.svg`, type: "image/svg+xml" },
+      { rel: "icon", href: `${BASE}favicon-32x32.png`, type: "image/png", sizes: "32x32" },
+      { rel: "apple-touch-icon", href: `${BASE}apple-touch-icon.png`, sizes: "180x180" },
+      { rel: "manifest", href: `${BASE}site.webmanifest` },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       {
         rel: "preconnect",
