@@ -147,6 +147,7 @@ export const rooms = {
 
 export const dining = {
   eyebrow: { en: "Table", ar: "المائدة" },
+  reserve: { en: "Reserve a table", ar: "احجز مائدة" },
   title: { en: "Where the day slows down", ar: "حيث يهدأ النهار" },
   text: {
     en: "Three tables, one kitchen, and a pantry that sources from the same souks the house has used for generations.",

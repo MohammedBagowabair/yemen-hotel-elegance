@@ -64,7 +64,7 @@ export function Dining() {
                   href="#contact"
                   className="mt-7 inline-flex rounded-full border border-ink/25 px-6 py-3 text-sm font-medium text-ink transition-colors hover:border-brass hover:bg-brass/10"
                 >
-                  {dining.eyebrow[lang]} — {item.name[lang]}
+                  {dining.reserve[lang]}
                 </a>
               </Reveal>
             </div>
