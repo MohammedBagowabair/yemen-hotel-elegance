@@ -1,11 +1,10 @@
-import { heroAvifSrcSet, heroMobileAvifSrcSet, heroMobileSrcSet, pic } from "@/lib/img";
-import { ArrowDown, Clock, Coffee, MapPin, Plane } from "lucide-react";
+import { heroFrameAvifSrcSet, heroFrameSizes, heroFrameWebpSrcSet } from "@/lib/img";
+import { Clock, Coffee, MapPin, Plane } from "lucide-react";
 import { hero, highlights } from "@/lib/content";
 import { useLanguage } from "@/lib/language";
 import { waLink, waMessages } from "@/lib/whatsapp";
 import { T } from "@/components/T";
 import { WaGlyph } from "@/components/WhatsAppFab";
-const heroImg = pic("hero");
 
 const highlightIcons = [MapPin, Plane, Clock, Coffee];
 
@@ -13,18 +12,18 @@ const highlightIcons = [MapPin, Plane, Clock, Coffee];
 function HighlightStrip() {
   const { lang } = useLanguage();
   return (
-    <div className="mx-auto w-full max-w-5xl rounded-3xl border border-background/15 bg-ink/55 p-2 backdrop-blur-md">
-      <ul aria-label={highlights.label[lang]} className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl lg:grid-cols-4">
+    <div className="w-full rounded-3xl border border-brass/25 bg-card p-2 shadow-[0_24px_60px_-40px_rgba(90,60,20,0.45)]">
+      <ul aria-label={highlights.label[lang]} className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl sm:grid-cols-4 lg:grid-cols-2">
         {highlights.items.map((item, index) => {
           const Icon = highlightIcons[index] ?? MapPin;
           return (
             <li key={item.title.en} className="flex items-start gap-3 px-3 py-3 sm:px-4">
-              <span className="mt-0.5 grid size-8 shrink-0 place-items-center rounded-full border border-brass/45 text-brass">
+              <span className="mt-0.5 grid size-8 shrink-0 place-items-center rounded-full border border-brass/45 bg-[#F7F1E8] text-brass-deep">
                 <Icon className="size-4" aria-hidden />
               </span>
               <span className="min-w-0 leading-tight">
-                <span className="block text-sm font-medium text-background"><T v={item.title} /></span>
-                <span className="mt-1 block text-xs text-background/65"><T v={item.text} /></span>
+                <span className="block text-sm font-medium text-ink"><T v={item.title} /></span>
+                <span className="mt-1 block text-xs text-ink/70"><T v={item.text} /></span>
               </span>
             </li>
           );
@@ -44,74 +43,80 @@ function HighlightStrip() {
 }
 
 export function Hero() {
-  const { lang } = useLanguage();
-
   return (
-    <section id="top" className="relative isolate overflow-hidden bg-ink">
-      <picture>
-        <source media="(max-aspect-ratio: 1/1)" type="image/avif" srcSet={heroMobileAvifSrcSet} sizes="100vw" />
-        <source media="(max-aspect-ratio: 1/1)" type="image/webp" srcSet={heroMobileSrcSet} sizes="100vw" />
-        <source type="image/avif" srcSet={heroAvifSrcSet} sizes="100vw" />
-        <img
-          {...heroImg}
-          sizes="100vw"
-          alt=""
-          aria-hidden
-          fetchPriority="high"
-          decoding="async"
-          width={1920}
-          height={1088}
-          className="hero-drift absolute inset-0 size-full object-cover"
-        />
-      </picture>
+    <section
+      id="top"
+      className="relative isolate overflow-hidden bg-[linear-gradient(to_bottom,#F7F1E8_0%,#F7F1E8_82%,var(--background)_100%)] text-ink"
+    >
       <div
         aria-hidden
-        className="absolute inset-0 bg-gradient-to-b from-ink/75 via-ink/45 to-ink/85"
+        className="pointer-events-none absolute -top-24 size-[28rem] rounded-full bg-brass/10 blur-3xl ltr:-right-32 rtl:-left-32"
       />
-      <div
-        aria-hidden
-        className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-40"
-      />
-
-      <div className="relative mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-end px-5 pt-32 pb-10 sm:px-8">
-        <div className="max-w-3xl">
-          <p className="flex items-center gap-3 text-[0.7rem] tracking-[0.2em] text-brass uppercase">
+      <div className="relative mx-auto grid max-w-7xl gap-10 px-5 pt-28 pb-12 sm:px-8 lg:min-h-[100svh] lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-16 lg:pt-32 lg:pb-16">
+        <div className="max-w-2xl">
+          <p className="flex items-center gap-3 text-[0.7rem] tracking-[0.2em] text-brass-deep uppercase">
             <span aria-hidden className="rule-brass" />
             <T v={hero.eyebrow} />
           </p>
-          <h1 className="mt-6 font-display text-4xl leading-[1.08] text-background sm:text-6xl lg:text-7xl">
+          <h1 className="mt-5 font-display text-4xl leading-[1.12] text-ink sm:text-6xl lg:text-[4.25rem]">
             <T v={hero.title} />
           </h1>
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-background/80 sm:text-lg">
+          <p className="mt-5 max-w-xl text-base leading-relaxed text-ink/80 sm:text-lg">
             <T v={hero.text} />
           </p>
-          <div className="mt-9 flex flex-wrap items-center gap-3">
+          <div className="mt-8 flex flex-wrap items-center gap-3">
             <a
               href="#contact"
-              className="rounded-full bg-brass px-7 py-3.5 text-sm font-semibold text-ink transition-transform hover:scale-[1.03]"
+              className="rounded-full bg-ink px-7 py-3.5 text-sm font-semibold text-background transition-transform hover:scale-[1.03]"
             >
               <T v={hero.primary} />
             </a>
             <a
               href="#about"
-              className="rounded-full border border-background/35 px-7 py-3.5 text-sm font-semibold text-background transition-colors hover:border-background hover:bg-background/10"
+              className="rounded-full border border-ink/25 px-7 py-3.5 text-sm font-semibold text-ink transition-colors hover:border-brass-deep hover:text-brass-deep"
             >
               <T v={hero.secondary} />
             </a>
           </div>
+          <div className="mt-10 hidden lg:block">
+            <HighlightStrip />
+          </div>
         </div>
 
-        <div className="mt-14">
+        <div className="relative mx-auto w-full max-w-md sm:max-w-lg lg:max-w-none">
+          {/* Arched frame inspired by Sana'a qamariya windows */}
+          <div
+            aria-hidden
+            className="absolute -inset-3 rounded-t-[999px] rounded-b-[2rem] border border-brass/40 sm:-inset-4"
+          />
+          <div className="relative aspect-[4/5] overflow-hidden rounded-t-[999px] rounded-b-[1.75rem] bg-sand shadow-[0_40px_80px_-50px_rgba(90,60,20,0.6)]">
+            <picture>
+              <source type="image/avif" srcSet={heroFrameAvifSrcSet} sizes={heroFrameSizes} />
+              <img
+                src={`${import.meta.env.BASE_URL}img/hero-p-720.webp`}
+                srcSet={heroFrameWebpSrcSet}
+                sizes={heroFrameSizes}
+                alt=""
+                aria-hidden
+                fetchPriority="high"
+                decoding="async"
+                width={870}
+                height={1088}
+                className="hero-drift size-full object-cover"
+              />
+            </picture>
+          </div>
+          <span
+            aria-hidden
+            className="absolute -bottom-5 grid size-14 place-items-center rounded-full border border-brass/50 bg-[#F7F1E8] text-brass-deep ltr:left-6 rtl:right-6"
+          >
+            <span className="block size-3 rotate-45 bg-brass" />
+          </span>
+        </div>
+
+        <div className="lg:hidden">
           <HighlightStrip />
         </div>
-
-        <a
-          href="#about"
-          className="scroll-cue mx-auto mt-10 flex flex-col items-center gap-2 text-[0.62rem] tracking-[0.3em] text-background/60 uppercase"
-        >
-          <T v={hero.scroll} />
-          <ArrowDown className="size-4" aria-hidden />
-        </a>
       </div>
     </section>
   );

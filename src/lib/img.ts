@@ -22,3 +22,7 @@ export function pic(name: keyof typeof widths | string): Pic {
 export const heroMobileSrcSet = `${imgUrl("hero-m", 480)} 480w, ${imgUrl("hero-m", 653)} 653w`;
 export const heroMobileAvifSrcSet = `${BASE}img/hero-m-480.avif 480w, ${BASE}img/hero-m-653.avif 653w`;
 export const heroAvifSrcSet = [800, 1200, 1920].map((w) => `${BASE}img/hero-${w}.avif ${w}w`).join(", ");
+// Light hero: 4:5 portrait crop shown in the arched frame.
+export const heroFrameSizes = "(min-width: 1024px) 34rem, (min-width: 640px) 70vw, calc(100vw - 2.5rem)";
+export const heroFrameAvifSrcSet = [480, 720, 870].map((w) => `${BASE}img/hero-p-${w}.avif ${w}w`).join(", ");
+export const heroFrameWebpSrcSet = [480, 720, 870].map((w) => `${BASE}img/hero-p-${w}.webp ${w}w`).join(", ");

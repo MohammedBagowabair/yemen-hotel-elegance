@@ -28,3 +28,9 @@ crop = hero.crop((x, 0, x + cw, H))
 for w, q in [(480, 55), (653, 52)]:
     fit(crop, w).save(f"{OUT}/hero-m-{w}.webp", "WEBP", quality=q, method=6)
     fit(crop, w).save(f"{OUT}/hero-m-{w}.avif", "AVIF", quality=38, speed=4)
+# Light hero (arched frame): 4:5 centre crop.
+cw = round(H * 0.8); x = (W - cw) // 2
+crop45 = hero.crop((x, 0, x + cw, H))
+for w in [480, 720, 870]:
+    fit(crop45, w).save(f"{OUT}/hero-p-{w}.avif", "AVIF", quality=45, speed=4)
+    fit(crop45, w).save(f"{OUT}/hero-p-{w}.webp", "WEBP", quality=70, method=6)

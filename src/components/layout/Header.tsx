@@ -74,12 +74,12 @@ export function Header() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-500",
         solid
-          ? "border-b border-border/70 bg-background/95 backdrop-blur-md"
-          : "border-b border-transparent bg-transparent",
+          ? "border-b border-border/70 bg-background/95 shadow-[0_10px_30px_-24px_rgba(60,40,20,0.5)] backdrop-blur-md"
+          : "border-b border-transparent bg-[#F7F1E8]/80",
       )}
     >
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-6 px-5 sm:px-8">
-        <Wordmark tone={solid ? "dark" : "light"} />
+        <Wordmark tone="dark" />
 
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary">
           {links.map((link) => (
@@ -88,9 +88,7 @@ export function Header() {
               href={`#${link.id}`}
               className={cn(
                 "text-sm font-medium transition-colors",
-                solid
-                  ? "text-foreground/75 hover:text-brass-deep"
-                  : "text-background/80 hover:text-background",
+                "text-foreground/80 hover:text-brass-deep",
               )}
             >
               <T v={link.label} />
@@ -105,9 +103,7 @@ export function Header() {
             aria-label={a11y.langSwitch[lang]}
             className={cn(
               "inline-flex items-center gap-2 rounded-full border px-3.5 py-2 text-xs font-medium tracking-wide transition-colors",
-              solid
-                ? "border-border text-foreground hover:border-brass hover:text-brass-deep"
-                : "border-background/30 text-background hover:border-background/70",
+              "border-ink/20 text-ink hover:border-brass hover:text-brass-deep",
             )}
           >
             <Globe className="size-3.5" aria-hidden />
@@ -128,9 +124,7 @@ export function Header() {
             aria-label={open ? a11y.closeMenu[lang] : a11y.openMenu[lang]}
             className={cn(
               "grid size-10 place-items-center rounded-full border transition-colors lg:hidden",
-              solid
-                ? "border-border text-foreground"
-                : "border-background/30 text-background",
+              "border-ink/20 bg-card/70 text-ink",
             )}
           >
             {open ? <X className="size-5" /> : <Menu className="size-5" />}
