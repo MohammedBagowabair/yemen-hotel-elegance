@@ -7,7 +7,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import type { Lang } from "@/lib/content";
+import { meta, type Lang } from "@/lib/content";
 
 const STORAGE_KEY = "daralsama-lang";
 
@@ -19,25 +19,36 @@ type LanguageValue = {
 };
 
 const LanguageContext = createContext<LanguageValue>({
-  lang: "en",
-  dir: "ltr",
+  lang: "ar",
+  dir: "rtl",
   setLang: () => {},
   toggle: () => {},
 });
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Lang>("en");
+  // Arabic is the default (and what the static HTML is prerendered in).
+  // ?lang=en / ?lang=ar or a saved choice override it.
+  const [lang, setLangState] = useState<Lang>("ar");
 
   useEffect(() => {
+    const query = new URLSearchParams(window.location.search).get("lang");
     const stored = window.localStorage.getItem(STORAGE_KEY);
-    if (stored === "ar" || stored === "en") setLangState(stored);
+    const initial = query === "en" || query === "ar" ? query : stored;
+    if (initial === "ar" || initial === "en") setLangState(initial);
   }, []);
 
   useEffect(() => {
     const dir = lang === "ar" ? "rtl" : "ltr";
     document.documentElement.lang = lang;
     document.documentElement.dir = dir;
+    document.title = meta.title[lang];
+    document.querySelector('meta[name="description"]')?.setAttribute("content", meta.description[lang]);
     window.localStorage.setItem(STORAGE_KEY, lang);
+    const url = new URL(window.location.href);
+    if (url.searchParams.has("lang") && url.searchParams.get("lang") !== lang) {
+      url.searchParams.set("lang", lang);
+      window.history.replaceState(null, "", url.toString());
+    }
   }, [lang]);
 
   const setLang = useCallback((next: Lang) => setLangState(next), []);

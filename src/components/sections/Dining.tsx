@@ -23,7 +23,44 @@ export function Dining() {
           align="center"
         />
 
-        <div className="mt-16 space-y-16 sm:space-y-24">
+        {/* Mobile: image cards with the copy set on a legible gradient. */}
+        <div className="mt-10 space-y-5 lg:hidden">
+          {dining.items.map((item, index) => (
+            <Reveal key={item.name.en}>
+              <article className="relative isolate overflow-hidden rounded-[1.75rem] border border-border/60 bg-ink">
+                <img
+                  src={images[index]}
+                  alt={item.name[lang]}
+                  loading="lazy"
+                  width={1200}
+                  height={800}
+                  className="absolute inset-0 -z-10 size-full object-cover"
+                />
+                <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-t from-ink via-ink/75 to-ink/0" />
+                <div className="flex min-h-[26rem] flex-col justify-end p-6 pt-40">
+                  <p className="flex items-center gap-3 text-[0.7rem] tracking-[0.2em] text-brass uppercase">
+                    <span aria-hidden className="rule-brass" />
+                    {String(index + 1).padStart(2, "0")}
+                  </p>
+                  <h3 className="mt-3 font-display text-3xl text-background">{item.name[lang]}</h3>
+                  <p className="mt-2 inline-flex items-center gap-2 text-xs tracking-[0.12em] text-background/75 uppercase">
+                    <Clock className="size-3.5 text-brass" aria-hidden />
+                    {item.hours[lang]}
+                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-background/85">{item.text[lang]}</p>
+                  <a
+                    href="#contact"
+                    className="mt-5 inline-flex min-h-[44px] items-center self-start rounded-full border border-background/40 px-5 text-sm font-medium text-background transition-colors hover:border-brass hover:bg-brass/15"
+                  >
+                    {dining.reserve[lang]}
+                  </a>
+                </div>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+
+        <div className="mt-16 hidden space-y-24 lg:block">
           {dining.items.map((item, index) => (
             <div
               key={item.name.en}

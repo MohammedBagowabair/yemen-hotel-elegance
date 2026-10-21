@@ -222,3 +222,25 @@
 .scroll-cue {
   animation: cue 2.4s ease-in-out infinite;
 }
+
+/* Floating WhatsApp button stays out of the way of menus and dialogs. */
+html[data-menu-open] .wa-fab,
+body[data-scroll-locked] .wa-fab {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(1rem);
+}
+
+/* Horizontal swipe rails (rooms, dining on mobile). */
+.swipe-rail {
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+}
+.swipe-rail::-webkit-scrollbar {
+  display: none;
+}
+.swipe-rail > * {
+  scroll-snap-align: start;
+}

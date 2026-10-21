@@ -28,19 +28,19 @@ export function Amenities() {
           align="center"
         />
 
-        <div className="mt-14 grid gap-px overflow-hidden rounded-3xl border border-ink-foreground/12 bg-ink-foreground/12 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-ink-foreground/12 bg-ink-foreground/12 sm:mt-14 lg:grid-cols-4">
           {amenities.items.map((item, index) => {
             const Icon = icons[index] ?? Waves;
             return (
               <Reveal key={item.name.en} delay={index * 60}>
-                <div className="group h-full bg-ink p-7 transition-colors duration-500 hover:bg-primary/20">
-                  <span className="grid size-11 place-items-center rounded-full border border-brass/40 text-brass transition-colors group-hover:bg-brass group-hover:text-ink">
-                    <Icon className="size-5" aria-hidden />
+                <div className="group h-full bg-ink p-4 transition-colors duration-500 hover:bg-primary/20 sm:p-7">
+                  <span className="grid size-9 place-items-center rounded-full sm:size-11 border border-brass/40 text-brass transition-colors group-hover:bg-brass group-hover:text-ink">
+                    <Icon className="size-4 sm:size-5" aria-hidden />
                   </span>
-                  <h3 className="mt-5 font-display text-xl text-ink-foreground">
+                  <h3 className="mt-3 font-display text-base leading-snug text-ink-foreground sm:mt-5 sm:text-xl">
                     {item.name[lang]}
                   </h3>
-                  <p className="mt-2 text-sm text-ink-foreground/60">{item.text[lang]}</p>
+                  <p className="mt-1 text-xs leading-relaxed text-ink-foreground/65 sm:mt-2 sm:text-sm sm:text-ink-foreground/60">{item.text[lang]}</p>
                 </div>
               </Reveal>
             );

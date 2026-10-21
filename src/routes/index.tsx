@@ -10,33 +10,20 @@ import { Gallery } from "@/components/sections/Gallery";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { CtaBanner } from "@/components/sections/CtaBanner";
 import { Contact } from "@/components/sections/Contact";
-import { a11y } from "@/lib/content";
+import { a11y, meta } from "@/lib/content";
 import { useLanguage } from "@/lib/language";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      {
-        title: "Dar Al Sama Hotel & Residences · Old Sana'a, Yemen",
-      },
-      {
-        name: "description",
-        content:
-          "دار السماء للفنادق والأجنحة — Dar Al Sama is a 48-key boutique hotel and serviced residence inside a restored Old Sana'a house: rooftop dining, hammam and spa, and courtyard rooms. / فندق بوتيك وأجنحة مخدومة في بيت صنعاني مُرمَّم، مع مطعم على السطح وحمّام وقاعات فناء.",
-      },
+      { title: meta.title.ar },
+      { name: "description", content: meta.description.ar },
       { name: "robots", content: "index, follow" },
-      {
-        property: "og:title",
-        content: "Dar Al Sama Hotel & Residences · Old Sana'a, Yemen",
-      },
-      {
-        property: "og:description",
-        content:
-          "A restored Old Sana'a house reborn as a 48-key boutique hotel: courtyard rooms, rooftop mezze at sunset, and a hammam below the oldest mountain city in the world.",
-      },
+      { property: "og:title", content: meta.title.ar },
+      { property: "og:description", content: meta.description.ar },
       { property: "og:type", content: "website" },
-      { property: "og:locale", content: "en_US" },
-      { property: "og:locale:alternate", content: "ar_YE" },
+      { property: "og:locale", content: "ar_YE" },
+      { property: "og:locale:alternate", content: "en_US" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),

@@ -12,6 +12,8 @@ import { type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { LanguageProvider } from "../lib/language";
+import { meta } from "../lib/content";
+import { WhatsAppFab } from "../components/WhatsAppFab";
 
 const BASE = import.meta.env.BASE_URL;
 const SITE_URL = "https://mohammedbagowabair.github.io/yemen-hotel-elegance/";
@@ -77,27 +79,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Dar Al Sama Hotel & Residences · Old Sana'a, Yemen" },
-      {
-        name: "description",
-        content:
-          "A restored Old Sana'a house reborn as a 48-key boutique hotel: courtyard rooms, rooftop mezze at sunset, and a hammam below the oldest mountain city in the world.",
-      },
-      { name: "author", content: "Dar Al Sama Hotel & Residences" },
-      {
-        property: "og:title",
-        content: "Dar Al Sama Hotel & Residences · Old Sana'a, Yemen",
-      },
-      {
-        property: "og:description",
-        content:
-          "A restored Old Sana'a house reborn as a 48-key boutique hotel: courtyard rooms, rooftop mezze at sunset, and a hammam below the oldest mountain city in the world.",
-      },
+      { title: meta.title.ar },
+      { name: "description", content: meta.description.ar },
+      { name: "author", content: "دار السماء للفنادق والأجنحة" },
+      { property: "og:title", content: meta.title.ar },
+      { property: "og:description", content: meta.description.ar },
       { property: "og:type", content: "website" },
       { property: "og:image", content: OG_IMAGE },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
-      { property: "og:image:alt", content: "Dar Al Sama Hotel & Residences, Old Sana'a" },
+      { property: "og:image:alt", content: "دار السماء للفنادق والأجنحة، صنعاء القديمة" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: OG_IMAGE },
       { name: "theme-color", content: "#2C2119" },
@@ -132,7 +123,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" dir="ltr">
+    <html lang="ar" dir="rtl">
       <head>
         <HeadContent />
       </head>
@@ -152,6 +143,7 @@ function RootComponent() {
       <LanguageProvider>
         {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
         <Outlet />
+        <WhatsAppFab />
       </LanguageProvider>
     </QueryClientProvider>
   );

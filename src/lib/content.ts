@@ -45,16 +45,26 @@ export const hero = {
   scroll: { en: "Scroll", ar: "انزل" },
 };
 
-export const booking = {
-  title: { en: "Plan your stay", ar: "خطّط لإقامتك" },
-  checkIn: { en: "Check in", ar: "تاريخ الوصول" },
-  checkOut: { en: "Check out", ar: "تاريخ المغادرة" },
-  guests: { en: "Guests", ar: "الضيوف" },
-  rooms: { en: "Rooms", ar: "الغرف" },
-  search: { en: "Search", ar: "ابحث" },
-  result: {
-    en: "Availability held for 24 hours. Our team confirms by email.",
-    ar: "تُحفظ الغرفة ٢٤ ساعة، ويتواصل فريقنا معك بالبريد للتأكيد.",
+export const highlights = {
+  label: { en: "Stay highlights", ar: "أبرز ما في الإقامة" },
+  items: [
+    { title: { en: "Old Sana'a", ar: "صنعاء القديمة" }, text: { en: "Al-Qi'yah Street", ar: "شارع القِيعة" } },
+    { title: { en: "12 min", ar: "١٢ دقيقة" }, text: { en: "to the airport", ar: "إلى المطار" } },
+    { title: { en: "Reception 24h", ar: "استقبال ٢٤ ساعة" }, text: { en: "Open every day", ar: "مفتوح يوميًا" } },
+    { title: { en: "Included", ar: "مشمول" }, text: { en: "Breakfast, hammam, transfer", ar: "الإفطار والحمّام والتوصيل" } },
+  ],
+  cta: { en: "Request availability on WhatsApp", ar: "اطلب التوفّر عبر واتساب" },
+  fab: { en: "Chat on WhatsApp", ar: "تواصل عبر واتساب" },
+};
+
+export const meta = {
+  title: {
+    en: "Dar Al Sama Hotel & Residences · Old Sana'a, Yemen",
+    ar: "دار السماء للفنادق والأجنحة · صنعاء القديمة، اليمن",
+  },
+  description: {
+    en: "A restored Old Sana'a house reborn as a 48-key boutique hotel: courtyard rooms, rooftop mezze at sunset, and a hammam below the oldest mountain city in the world.",
+    ar: "بيتٌ صنعاني مُرمَّم صار فندق بوتيك من ٤٨ غرفة وجناحًا: غرف على الفناء، ومازة على السطح وقت الغروب، وحمّام تحت أقدم مدينة جبلية في العالم.",
   },
 };
 
@@ -96,13 +106,12 @@ export const rooms = {
     en: "Every room faces either the courtyard or the old city. Rates include breakfast, the hammam, and airport transfer.",
     ar: "كل غرفة تطلّ على الفناء أو على المدينة القديمة. تشمل الأسعار الإفطار والحمّام والتوصيل من المطار.",
   },
-  from: { en: "from", ar: "ابتداءً من" },
-  perNight: { en: "/ night", ar: "/ ليلة" },
+  request: { en: "Request availability on WhatsApp", ar: "اطلب التوفّر عبر واتساب" },
+  swipe: { en: "Room", ar: "الغرفة" },
   details: { en: "Room details", ar: "تفاصيل الغرفة" },
   items: [
     {
       name: { en: "Old City Room", ar: "غرفة المدينة القديمة" },
-      price: "140",
       size: { en: "32 m² · King bed", ar: "٣٢ م² · سرير كينج" },
       text: {
         en: "Lime-washed walls, a qamariya window over the lane, and a stone bench for reading.",
@@ -116,7 +125,6 @@ export const rooms = {
     },
     {
       name: { en: "Sana'a Suite", ar: "جناح صنعاء" },
-      price: "260",
       size: { en: "58 m² · Separate majlis", ar: "٥٨ م² · مجلس منفصل" },
       text: {
         en: "A sitting room with carved cedar screens, a freestanding tub, and a private terrace.",
@@ -130,7 +138,6 @@ export const rooms = {
     },
     {
       name: { en: "Royal Residence", ar: "الجناح الملكي" },
-      price: "480",
       size: { en: "96 m² · Private rooftop", ar: "٩٦ م² · سطح خاص" },
       text: {
         en: "Two bedrooms, a majlis that seats eight, and a rooftop with its own fire pit.",
