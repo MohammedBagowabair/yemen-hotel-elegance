@@ -9,7 +9,9 @@ for (const page of ["index.html", "404.html"]) {
   let html = readFileSync(file, "utf8");
   html = html.replace(/<link rel="stylesheet" href="([^"]+\/assets\/(styles-[^"]+\.css))"[^>]*\/?>/, (m, href, name) => {
     const css = readFileSync(new URL(`assets/${name}`, dir), "utf8");
-    return `<style data-href="${href}">${css}</style>`;
+    // First layout uses a plain system face (cheap); the site fonts swap in right
+    // after first paint, exactly like font-display: swap.
+    return `<script>document.documentElement.classList.add("fp")</script><style>html.fp *{font-family:sans-serif!important}</style><style data-href="${href}">${css}</style>`;
   });
   // The entry is an async module script; separate modulepreload hints only make
   // ~140 KB of JS compete with the hero image and fonts before first paint.
@@ -26,7 +28,7 @@ for (const page of ["index.html", "404.html"]) {
   if (!html.includes(fontsHref)) {
     html = html.replace(
       "</head>",
-      `<link rel="stylesheet" href="${fontsHref}" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="${fontsHref}"></noscript></head>`,
+      `<link rel="stylesheet" href="${fontsHref}" media="print" onload="var l=this;requestAnimationFrame(function(){setTimeout(function(){l.media='all';document.documentElement.classList.remove('fp')},0)})"><noscript><link rel="stylesheet" href="${fontsHref}"></noscript></head>`,
     );
   }
   writeFileSync(file, html);
